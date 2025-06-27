@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhanced Feedback Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 450px;
+      background-color: white;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .rating {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .rating label {
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      display: none; /* set to block with JS after form submit */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Feedback Form</h2>
+    <form action="/submit" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="type">Feedback Type:</label>
+      <select id="type" name="type" required>
+        <option value="" disabled selected>Choose type</option>
+        <option value="Complaint">Complaint</option>
+        <option value="Suggestion">Suggestion</option>
+        <option value="Compliment">Compliment</option>
+      </select>
+
+      <label for="rating">Rate Us:</label>
+      <div class="rating">
+        <label><input type="radio" name="rating" value="1" required> 1</label>
+        <label><input type="radio" name="rating" value="2"> 2</label>
+        <label><input type="radio" name="rating" value="3"> 3</label>
+        <label><input type="radio" name="rating" value="4"> 4</label>
+        <label><input type="radio" name="rating" value="5"> 5</label>
+      </div>
+
+      <label for="feedback">Your Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="5" required></textarea>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <div class="success-message" id="success">
+      Thank you! Your feedback has been submitted.
+    </div>
+  </div>
+
+  <!-- Optional JavaScript to show success message -->
+  <script>
+    // This can be activated after a real Flask submission
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // remove this line when connecting to backend
+      document.getElementById("success").style.display = "block";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
