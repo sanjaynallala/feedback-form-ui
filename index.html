@@ -89,7 +89,7 @@
 <body>
   <div class="container">
     <h2>Feedback Form</h2>
-    <form action="/submit" method="post">
+    <form action="thankyou.html" method="get">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
 
@@ -123,16 +123,5 @@
       Thank you! Your feedback has been submitted.
     </div>
   </div>
-
-  <!-- Optional JavaScript to show success message -->
-  <script>
-    // This can be activated after a real Flask submission
-    const form = document.querySelector("form");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // remove this line when connecting to backend
-      document.getElementById("success").style.display = "block";
-      form.reset();
-    });
-  </script>
 </body>
 </html>
